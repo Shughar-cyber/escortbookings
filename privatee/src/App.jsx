@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function App() {
@@ -14,8 +14,18 @@ export default function App() {
   const [lookupResult, setLookupResult] = useState(null);
   const [lookupError, setLookupError] = useState("");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
+    window.history.scrollRestoration = "manual";
+    resetScroll();
+    window.addEventListener("pageshow", resetScroll);
+
+    return () => {
+      window.removeEventListener("pageshow", resetScroll);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
   }, []);
 
   const handleSubmit = (e) => {
@@ -106,7 +116,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fff0f8] via-[#ffe5f5] to-[#fbd5ec] relative flex flex-col items-center py-10 sm:py-16 px-4 font-sans text-gray-700 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#fff0f8] via-[#ffe5f5] to-[#fbd5ec] relative flex flex-col items-center py-10 sm:py-16 px-4 font-sans text-gray-700 overflow-x-clip">
 
       {/* Decorative floating orbs */}
       <div className="fixed top-[-5%] left-[-8%] w-80 h-80 bg-gradient-to-br from-pink-300 to-rose-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-float pointer-events-none"></div>
