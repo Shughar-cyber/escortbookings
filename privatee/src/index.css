@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-pink-50 font-sans text-gray-700 antialiased; }
+
+  /* Custom select styling */
+  select option {
+    background-color: white;
+    color: #374151;
+    padding: 8px;
+  }
+}
+
+@layer components {
+  /* Premium input focus glow */
+  .input-glow:focus {
+    box-shadow: 0 0 0 3px rgba(251, 197, 229, 0.4), 0 0 20px rgba(251, 197, 229, 0.15);
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  /* Premium button gradient */
+  .btn-premium {
+    background: linear-gradient(135deg, #de5c8e, #c24676, #a63963);
+    background-size: 200% 200%;
+    transition: all 0.4s ease;
+  }
+  .btn-premium:hover {
+    background-position: 100% 100%;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -8px rgba(194, 70, 118, 0.5);
+  }
+  .btn-premium:active {
+    transform: translateY(0);
+  }
+
+  /* Shimmer effect for code display */
+  .shimmer-border {
+    background: linear-gradient(90deg, transparent 0%, rgba(191,69,118,0.15) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+}
+
+@layer utilities {
+  /* Staggered animation delays for form fields */
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.1s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.2s; }
+  .stagger-5 { animation-delay: 0.25s; }
+  .stagger-6 { animation-delay: 0.3s; }
+  .stagger-7 { animation-delay: 0.35s; }
+  .stagger-8 { animation-delay: 0.4s; }
+  .stagger-9 { animation-delay: 0.45s; }
+  .stagger-10 { animation-delay: 0.5s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
