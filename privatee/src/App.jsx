@@ -278,6 +278,7 @@ export default function App() {
                     <option value="Zelle">Zelle</option>
                     <option value="PayPal">PayPal</option>
                     <option value="Venmo">Venmo</option>
+                    <option value="Chime">Chime</option>
                   </select>
                   <SelectArrow />
                 </div>
