@@ -309,6 +309,7 @@ export default function App() {
           </div>
 
           {/* Manage Appointment Section */}
+
           <div className="relative z-10 w-full max-w-2xl glass-card rounded-[2rem] shadow-lg shadow-pink-200/15 p-6 sm:p-10 animate-fade-up-delay-3">
             <h2 className="text-center text-[10px] font-bold text-gray-500 tracking-[0.2em] uppercase mb-6">
               Manage Your Appointment
@@ -330,7 +331,9 @@ export default function App() {
           </div>
         </>
       ) : (
+
         /* ============ SUCCESS VIEW ============ */
+
         <div className="relative z-10 w-full max-w-2xl flex flex-col items-center">
 
           {/* Header */}
